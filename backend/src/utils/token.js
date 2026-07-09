@@ -1,0 +1,12 @@
+// src/utils/token.js
+const jwt = require('jsonwebtoken');
+
+function generateToken(user) {
+  return jwt.sign(
+    { id: user.id, uuid: user.uuid, email: user.email, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+  );
+}
+
+module.exports = { generateToken };
