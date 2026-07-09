@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    @apply bg-cyber-base text-white font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar        { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track  { background: #0D1117; }
+  ::-webkit-scrollbar-thumb  { background: #1E2A3A; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #1565C0; }
+
+  /* Monospace for all blockchain addresses */
+  .address { @apply font-mono text-cyber-cyan text-sm break-all; }
+  .hash    { @apply font-mono text-cyber-muted text-xs break-all; }
+}
+
+@layer components {
+  /* === Cards === */
+  .card {
+    @apply bg-cyber-card border border-cyber-border rounded-lg p-5
+           transition-all duration-200;
+  }
+  .card:hover {
+    @apply border-cyber-blue/40 shadow-glow;
+  }
+
+  /* === Buttons === */
+  .btn-primary {
+    @apply bg-cyber-blue hover:bg-blue-700 text-white font-medium
+           px-4 py-2.5 rounded-md transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-cyber-cyan/50
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply text-cyber-muted hover:text-white hover:bg-cyber-border/50
+           px-3 py-2 rounded-md transition-all duration-150 text-sm;
+  }
+  .btn-danger {
+    @apply bg-cyber-red/10 hover:bg-cyber-red/20 text-cyber-red border border-cyber-red/30
+           px-4 py-2 rounded-md transition-all duration-150 text-sm font-medium;
+  }
+
+  /* === Inputs === */
+  .input {
+    @apply bg-cyber-surface border border-cyber-border rounded-md px-4 py-2.5
+           text-white placeholder-cyber-dim focus:outline-none focus:ring-2
+           focus:ring-cyber-cyan/40 focus:border-cyber-cyan/60
+           transition-all duration-150 w-full text-sm;
+  }
+
+  /* === Risk badges === */
+  .risk-low    { @apply text-cyber-green bg-cyber-green/10 border border-cyber-green/30; }
+  .risk-medium { @apply text-yellow-400 bg-yellow-400/10 border border-yellow-400/30; }
+  .risk-high   { @apply text-cyber-red bg-cyber-red/10 border border-cyber-red/30; }
+
+  .risk-badge {
+    @apply px-2.5 py-0.5 rounded-full text-xs font-mono font-medium uppercase tracking-wider;
+  }
+
+  /* === Sidebar scanline overlay === */
+  .scanline-overlay {
+    position: relative;
+    overflow: hidden;
+  }
+  .scanline-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,229,255,0.015) 2px,
+      rgba(0,229,255,0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* === Page fade-in === */
+  .page-enter {
+    @apply animate-fade-in;
+  }
+}
