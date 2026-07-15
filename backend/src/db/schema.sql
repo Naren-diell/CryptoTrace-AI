@@ -1,11 +1,7 @@
 -- ============================================================
 -- CryptoTrace AI - Database Schema (MySQL 8+)
 -- ============================================================
-
-CREATE DATABASE IF NOT EXISTS cryptotrace_ai
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-USE cryptotrace_ai;
+-- Database schema (database creation is handled by the cloud provider connection configuration)
 
 -- ---------------------------------------------------------
 -- users
